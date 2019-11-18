@@ -1,4 +1,4 @@
-package org.zelhajjami;
+package org.zelhajjami.entities;
 
 import java.io.Serializable;
 
