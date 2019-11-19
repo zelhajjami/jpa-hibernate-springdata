@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +18,16 @@ public class Product implements Serializable{
 	private String appelation;
 	private double price;
 	private int quantity;
+	@ManyToOne
+	@JoinColumn(name="ID_CAT") //Foreign key
+	private Category category;
+	
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -25,6 +37,15 @@ public class Product implements Serializable{
 		this.appelation = appelation;
 		this.price = price;
 		this.quantity = quantity;
+	}
+	
+	
+	public Product(String appelation, double price, int quantity, Category category) {
+		super();
+		this.appelation = appelation;
+		this.price = price;
+		this.quantity = quantity;
+		this.category = category;
 	}
 	public Long getIdProduct() {
 		return idProduct;
@@ -50,6 +71,7 @@ public class Product implements Serializable{
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	
 	
 	
 }
